@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class MessageCleaner {
 
-    private static final int numberOfFirstRowsToRemove = 10;
+    private static final int NUMBER_OF_ROWS_TO_REMOVE = 10;
 
     public StringBuffer clean(FileReader file) {
         try {
@@ -24,7 +24,7 @@ public class MessageCleaner {
         int rowCounter = 0;
         while ((strLine = bufferedReader.readLine()) != null) {
             // Remove useless introduction lines to perform csv handling.
-            if (rowCounter < numberOfFirstRowsToRemove) {
+            if (rowCounter < NUMBER_OF_ROWS_TO_REMOVE) {
                 rowCounter++;
                 continue;
             }

@@ -9,11 +9,20 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.List;
 
 public class CsvFormatter {
 
+    public static final int NUMBER_OF_ARGUMENTS_REQUIRED = 2;
+
     public static void main(String[] args) {
+
+        boolean invalidProgramArguments = Arrays.stream(args).filter(argument -> argument.endsWith(".csv")).count() != NUMBER_OF_ARGUMENTS_REQUIRED;
+        if (invalidProgramArguments) {
+            throw new IllegalArgumentException("Invalid arguments : required input and output .csv files.");
+        }
+
         String inputFile = args[0];
         String outputFile = args[1];
 
